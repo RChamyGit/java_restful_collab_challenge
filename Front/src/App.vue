@@ -9,11 +9,13 @@ import TheWelcome from './components/TheWelcome.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
+      {{ info }}
     </div>
   </header>
 
   <main>
     <TheWelcome />
+    
   </main>
 </template>
 
@@ -21,10 +23,15 @@ import TheWelcome from './components/TheWelcome.vue'
 import axios from 'axios'
 
 export default {
+  data () {
+    return {
+      info: null
+    }
+  },
   mounted() {
-    axios.get('https://jsonplaceholder.typicode.com/posts/1').then((response) => {
-        console.log(response.data.title)
-      })
+    axios
+      .get('http://10.0.0.179:8080/phrase')
+      .then(response => (this.info = response))
   }
 }
 </script>
