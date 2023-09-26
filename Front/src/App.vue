@@ -30,8 +30,8 @@ export default {
   },
   mounted() {
     axios
-      .get('http://10.0.0.179:8080/phrase')
-      .then(response => (this.info = response))
+      .get('/phrase')
+      .then(response => (this.info = response.data.phrase))
   }
 }
 </script>
